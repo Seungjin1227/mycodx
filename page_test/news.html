@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MycoDx | Tuberculosis &amp; NTM Diagnostics</title>
+    <meta name="description" content="MycoDx tuberculosis and NTM molecular diagnostics platform" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="subPage">
+    <a class="skip" href="#main">본문으로 바로가기</a>
+    <header class="siteHeader" id="top">
+      <div class="wrap headerInner">
+        <a class="brand" href="./index.html" aria-label="MycoDx Home">
+          <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
+        </a>
+        <nav class="desktopNav" aria-label="Main navigation">
+          <a href="./index.html">About</a>
+          <a href="./news.html" class="active">News</a>
+          <a href="./board.html" >Board</a>
+          <a href="./gallery.html" >Gallery</a>
+        </nav>
+        <button class="menuBtn" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="mobileNav" hidden>
+        <a href="./index.html">About</a>
+        <a href="./news.html">News</a>
+        <a href="./board.html">Board</a>
+        <a href="./gallery.html">Gallery</a>
+      </div>
+    </header>
+    <main id="main">
+      <section class="subHero sectionTop">
+        <div class="wrap subHeroInner reveal">
+          <p class="eyebrow">NEWS</p>
+          <h1>Lab News</h1>
+          <p class="lead">MycoDx의 분자 진단 기술, 기업부설연구소 기반 연구개발, 임상 검증과 협력 소식을 정리합니다.</p>
+        </div>
+      </section>
+      <section class="section">
+        <div class="wrap" id="newsContent"></div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap footerInner">
+        <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
+        <p>© <span id="year"></span> MycoDx. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="./js/content-loader.js"></script>
+    <script>
+      const menuBtn = document.querySelector('.menuBtn');
+      const mobileNav = document.querySelector('.mobileNav');
+      menuBtn?.addEventListener('click', () => {
+        const opened = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!opened));
+        mobileNav.hidden = opened;
+      });
+      mobileNav?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileNav.hidden = true;
+          menuBtn?.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('isVisible'));
+    </script>
+
+  </body>
+</html>

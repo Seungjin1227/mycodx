@@ -1,0 +1,128 @@
+media:
+  input: assets/uploads
+  output: /assets/uploads
+  extensions: [jpg, jpeg, png, webp]
+  rename: safe
+
+content:
+  - name: site_content
+    label: 홈페이지 콘텐츠
+    type: file
+    path: data/content.json
+    fields:
+      - name: news
+        label: 뉴스
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{date} · {title}"
+        fields:
+          - name: date
+            label: 날짜
+            type: string
+            required: true
+            description: "예: 2026.06.04 또는 2026.06"
+          - name: title
+            label: 제목
+            type: string
+            required: true
+          - name: summary
+            label: 요약 내용
+            type: text
+            required: true
+          - name: image
+            label: 대표 이미지
+            type: image
+            required: false
+            options:
+              path: assets/uploads
+              extensions: [jpg, jpeg, png, webp]
+          - name: visual
+            label: 기본 그래픽
+            type: select
+            required: false
+            options:
+              values:
+                - name: plateImg
+                  label: 배양 플레이트
+                - name: screenImg
+                  label: 분석 화면
+                - name: tubeImg
+                  label: 튜브/검체
+                - name: researchThumb
+                  label: 연구 썸네일
+
+      - name: board
+        label: 게시판
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{date} · {title}"
+        fields:
+          - name: label
+            label: 표시 라벨
+            type: string
+            required: true
+            description: "예: Notice, Research, Event"
+          - name: category
+            label: 카테고리
+            type: select
+            required: true
+            options:
+              values:
+                - name: notice
+                  label: 공지
+                - name: research
+                  label: 연구
+                - name: event
+                  label: 행사
+          - name: title
+            label: 제목
+            type: string
+            required: true
+          - name: date
+            label: 날짜
+            type: string
+            required: true
+            description: "예: 2026.06.04"
+          - name: url
+            label: 연결 링크
+            type: string
+            required: false
+            description: "상세 페이지가 없으면 # 그대로 두세요."
+
+      - name: gallery
+        label: 갤러리
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: 사진 제목
+            type: string
+            required: true
+          - name: image
+            label: 사진
+            type: image
+            required: false
+            options:
+              path: assets/uploads
+              extensions: [jpg, jpeg, png, webp]
+          - name: visual
+            label: 사진이 없을 때 기본 그래픽
+            type: select
+            required: false
+            options:
+              values:
+                - name: plateImg
+                  label: 배양 플레이트
+                - name: screenImg
+                  label: 분석 화면
+                - name: tubeImg
+                  label: 튜브/검체
+                - name: researchThumb
+                  label: 연구 썸네일

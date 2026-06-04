@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>MycoDx | Tuberculosis &amp; NTM Diagnostics</title>
+    <meta name="description" content="MycoDx tuberculosis and NTM molecular diagnostics platform" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="subPage">
+    <a class="skip" href="#main">본문으로 바로가기</a>
+    <header class="siteHeader" id="top">
+      <div class="wrap headerInner">
+        <a class="brand" href="./index.html" aria-label="MycoDx Home">
+          <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
+        </a>
+        <nav class="desktopNav" aria-label="Main navigation">
+          <a href="./index.html">About</a>
+          <a href="./news.html" >News</a>
+          <a href="./board.html" >Board</a>
+          <a href="./gallery.html" class="active">Gallery</a>
+        </nav>
+        <button class="menuBtn" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="mobileNav" hidden>
+        <a href="./index.html">About</a>
+        <a href="./news.html">News</a>
+        <a href="./board.html">Board</a>
+        <a href="./gallery.html">Gallery</a>
+      </div>
+    </header>
+    <main id="main">
+      <section class="subHero sectionTop">
+        <div class="wrap subHeroInner reveal">
+          <p class="eyebrow">GALLERY</p>
+          <h1>Lab Photos</h1>
+          <p class="lead">분자 진단 플랫폼, 임상 검증, 연구 인프라와 협력 과정을 시각적으로 정리한 갤러리입니다.</p>
+        </div>
+      </section>
+      <section class="section gallerySection">
+        <div class="wrap" id="galleryContent"></div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="wrap footerInner">
+        <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
+        <p>© <span id="year"></span> MycoDx. All rights reserved.</p>
+      </div>
+    </footer>
+    <script src="./js/content-loader.js"></script>
+    <script>
+      const menuBtn = document.querySelector('.menuBtn');
+      const mobileNav = document.querySelector('.mobileNav');
+      menuBtn?.addEventListener('click', () => {
+        const opened = menuBtn.getAttribute('aria-expanded') === 'true';
+        menuBtn.setAttribute('aria-expanded', String(!opened));
+        mobileNav.hidden = opened;
+      });
+      mobileNav?.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileNav.hidden = true;
+          menuBtn?.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.getElementById('year').textContent = new Date().getFullYear();
+      document.querySelectorAll('.reveal').forEach((el) => el.classList.add('isVisible'));
+      document.addEventListener('content:rendered', () => {
+        document.querySelectorAll('.galleryCard').forEach((card) => {
+          card.addEventListener('click', () => {
+            lightboxTitle.textContent = card.dataset.title || 'Lab Photo';
+            const image = card.dataset.image;
+            document.querySelector('.lightboxMock').style.backgroundImage = image ? `url("${image}")` : '';
+            document.querySelector('.lightboxMock').style.backgroundSize = image ? 'cover' : '';
+            document.querySelector('.lightboxMock').style.backgroundPosition = image ? 'center' : '';
+            lightbox.hidden = false;
+            document.body.classList.add('lock');
+          });
+        });
+      });
+    </script>
+
+    <div class="lightbox" id="lightbox" hidden>
+      <button class="lightboxClose" type="button" aria-label="닫기">×</button>
+      <div class="lightboxInner">
+        <div class="lightboxMock"></div>
+        <h3 id="lightboxTitle">Lab Photo</h3>
+      </div>
+    </div>
+    <script>
+      const lightbox = document.getElementById('lightbox');
+      const lightboxTitle = document.getElementById('lightboxTitle');
+      document.querySelector('.lightboxClose')?.addEventListener('click', () => {
+        lightbox.hidden = true;
+        document.body.classList.remove('lock');
+      });
+      lightbox?.addEventListener('click', (event) => {
+        if (event.target === lightbox) {
+          lightbox.hidden = true;
+          document.body.classList.remove('lock');
+        }
+      });
+    </script>
+
+  </body>
+</html>

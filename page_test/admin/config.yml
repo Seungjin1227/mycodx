@@ -1,0 +1,71 @@
+# Decap CMS optional fallback config.
+# 사용하려면 repo 값을 실제 GitHub 저장소로 바꾸고 GitHub OAuth를 설정해야 합니다.
+backend:
+  name: github
+  repo: mycodx84/mycodx84.github.io
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "site_content"
+    label: "홈페이지 콘텐츠"
+    files:
+      - name: "content"
+        label: "뉴스 / 게시판 / 갤러리"
+        file: "data/content.json"
+        format: "json"
+        fields:
+          - label: "뉴스"
+            name: "news"
+            widget: "list"
+            summary: "{{fields.date}} · {{fields.title}}"
+            fields:
+              - { label: "날짜", name: "date", widget: "string", hint: "예: 2026.06.04 또는 2026.06" }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "요약 내용", name: "summary", widget: "text" }
+              - { label: "대표 이미지", name: "image", widget: "image", required: false }
+              - label: "기본 그래픽"
+                name: "visual"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "배양 플레이트", value: "plateImg" }
+                  - { label: "분석 화면", value: "screenImg" }
+                  - { label: "튜브/검체", value: "tubeImg" }
+                  - { label: "연구 썸네일", value: "researchThumb" }
+
+          - label: "게시판"
+            name: "board"
+            widget: "list"
+            summary: "{{fields.date}} · {{fields.title}}"
+            fields:
+              - { label: "표시 라벨", name: "label", widget: "string", hint: "예: Notice, Research, Event" }
+              - label: "카테고리"
+                name: "category"
+                widget: "select"
+                options:
+                  - { label: "공지", value: "notice" }
+                  - { label: "연구", value: "research" }
+                  - { label: "행사", value: "event" }
+              - { label: "제목", name: "title", widget: "string" }
+              - { label: "날짜", name: "date", widget: "string", hint: "예: 2026.06.04" }
+              - { label: "연결 링크", name: "url", widget: "string", required: false, hint: "상세 페이지가 없으면 # 그대로 두세요." }
+
+          - label: "갤러리"
+            name: "gallery"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "사진 제목", name: "title", widget: "string" }
+              - { label: "사진", name: "image", widget: "image", required: false }
+              - label: "사진이 없을 때 기본 그래픽"
+                name: "visual"
+                widget: "select"
+                required: false
+                options:
+                  - { label: "배양 플레이트", value: "plateImg" }
+                  - { label: "분석 화면", value: "screenImg" }
+                  - { label: "튜브/검체", value: "tubeImg" }
+                  - { label: "연구 썸네일", value: "researchThumb" }
