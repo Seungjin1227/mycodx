@@ -98,7 +98,7 @@
       target.innerHTML = `
         <article class="newsDetail reveal isVisible">
           <a class="newsBack" href="./news.html">목록으로</a>
-          <div class="newsDetailVisual thumb ${escapeHTML(activeItem.visual || 'researchThumb')}" ${imageStyle(activeItem.image)}></div>
+          <div class="newsDetailVisual thumb newsPhoto ${activeItem.image ? '' : 'newsPhotoPlaceholder'}" ${imageStyle(activeItem.image)}></div>
           <div class="newsDetailBody">
             <time>${escapeHTML(activeItem.date)}</time>
             <h2>${escapeHTML(activeItem.title)}</h2>
@@ -115,7 +115,7 @@
     target.innerHTML = `
       <div class="newsDigest">
         <a class="newsLeadCard" href="./news.html?id=${encodeURIComponent(lead.id)}">
-          <div class="newsLeadVisual thumb ${escapeHTML(lead.visual || 'researchThumb')}" ${imageStyle(lead.image)}></div>
+          <div class="newsLeadVisual thumb newsPhoto ${lead.image ? '' : 'newsPhotoPlaceholder'}" ${imageStyle(lead.image)}></div>
           <div class="newsLeadBody">
             <time>${escapeHTML(lead.date)}</time>
             <h2>${escapeHTML(lead.title)}</h2>
@@ -125,7 +125,7 @@
         <div class="newsDigestList">
           ${rest.map((item) => `
             <a class="newsDigestItem" href="./news.html?id=${encodeURIComponent(item.id)}">
-              <div class="thumb ${escapeHTML(item.visual || 'screenImg')}" ${imageStyle(item.image)}></div>
+              <div class="thumb newsPhoto ${item.image ? '' : 'newsPhotoPlaceholder'}" ${imageStyle(item.image)}></div>
               <div>
                 <time>${escapeHTML(item.date)}</time>
                 <h3>${escapeHTML(item.title)}</h3>
