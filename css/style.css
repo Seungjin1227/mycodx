@@ -264,6 +264,102 @@ body.subPage .reveal {
 .stepItem h3 { font-size: clamp(22px, 2.2vw, 32px); letter-spacing: -.035em; }
 .stepItem p { margin: 12px 0 0; color: var(--sub); font-size: 17px; line-height: 1.72; }
 
+.partnershipSection {
+  background: #e9edf1;
+}
+.partnershipHead {
+  margin: 0 auto 58px;
+  text-align: center;
+}
+.partnershipHead h2 {
+  color: #0b1224;
+  font-size: clamp(54px, 6.4vw, 92px);
+  line-height: .95;
+  letter-spacing: 0;
+}
+.partnershipHead p {
+  margin: 26px 0 0;
+  color: #3f4b63;
+  font-size: clamp(20px, 2vw, 29px);
+  line-height: 1.5;
+}
+.partnerCards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 34px;
+}
+.partnerCard,
+.partnerInquiry {
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 22px 50px rgba(15,36,59,.08);
+}
+.partnerCard {
+  min-height: 250px;
+  padding: 58px 34px 46px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  text-align: center;
+}
+.partnerIcon {
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  margin-bottom: 32px;
+  border-radius: 999px;
+  background: #071020;
+  color: #fff;
+}
+.partnerIcon svg {
+  width: 34px;
+  height: 34px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.partnerCard h3 {
+  color: #050b18;
+  font-size: clamp(30px, 3vw, 42px);
+  letter-spacing: 0;
+}
+.partnerCard p {
+  margin: 22px 0 0;
+  color: #4a566c;
+  font-size: clamp(18px, 1.8vw, 25px);
+  line-height: 1.55;
+  word-break: keep-all;
+}
+.partnerInquiry {
+  margin-top: 46px;
+  padding: 62px 28px 70px;
+  text-align: center;
+}
+.partnerInquiry h3 {
+  color: #0b1224;
+  font-size: clamp(42px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+.partnerInquiry p {
+  max-width: 890px;
+  margin: 24px auto 0;
+  color: #3f4b63;
+  font-size: clamp(18px, 2vw, 27px);
+  line-height: 1.75;
+  word-break: keep-all;
+}
+.partnerInquiry .btn {
+  margin-top: 22px;
+  min-width: 170px;
+  min-height: 56px;
+  border-radius: 14px;
+  font-size: 20px;
+}
+
 .newsGrid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 76px; }
 .newsPanel { display: grid; gap: 18px; }
 .featuredNews { display: grid; grid-template-columns: 230px 1fr; gap: 24px; align-items: stretch; padding: 18px; border: 1px solid var(--line); border-radius: 20px; background: #fff; transition: transform .35s var(--ease-out), border-color .35s var(--ease-out), box-shadow .35s var(--ease-out); }
@@ -563,6 +659,8 @@ button.boardRow { width: 100%; border-top: 0; border-right: 0; border-left: 0; b
   .camelliaVisual { width: min(260px, 72vw); }
   .labVisual { --scan-distance: 190px; height: clamp(400px, 58vw, 480px); }
   .researchGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .partnerCards { grid-template-columns: 1fr; gap: 22px; }
+  .partnerCard { min-height: 220px; }
   .stickyHead { position: static; }
   .rowHead { display: block; }
   .rowHead .sectionDesc { margin-top: 16px; }
@@ -586,6 +684,18 @@ button.boardRow { width: 100%; border-top: 0; border-right: 0; border-left: 0; b
   .labVisual { --scan-distance: 130px; height: clamp(340px, 92vw, 390px); border-radius: 20px; }
   .visualInfoLayer { padding: 16px 18px 18px; }
   .researchGrid { grid-template-columns: 1fr; }
+  .partnershipHead { margin-bottom: 36px; }
+  .partnershipHead h2 { font-size: 44px; }
+  .partnershipHead p { font-size: 18px; }
+  .partnerCard { min-height: 0; padding: 40px 22px 36px; border-radius: 18px; }
+  .partnerIcon { width: 70px; height: 70px; margin-bottom: 24px; }
+  .partnerIcon svg { width: 28px; height: 28px; }
+  .partnerCard h3 { font-size: 29px; }
+  .partnerCard p { margin-top: 14px; font-size: 17px; }
+  .partnerInquiry { margin-top: 28px; padding: 42px 22px 48px; border-radius: 18px; }
+  .partnerInquiry h3 { font-size: 34px; }
+  .partnerInquiry p { font-size: 17px; line-height: 1.65; }
+  .partnerInquiry .btn { min-height: 50px; font-size: 17px; }
   .researchCard { border-right: 0; border-bottom: 1px solid var(--line); min-height: 210px; }
   .researchCard:last-child { border-bottom: 0; }
   .steps::before { left: 24px; }
