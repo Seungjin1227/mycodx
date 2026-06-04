@@ -268,13 +268,13 @@ body.subPage .reveal {
   background: #e9edf1;
 }
 .partnershipHead {
-  margin: 0 auto 58px;
+  margin: 0 auto 48px;
   text-align: center;
 }
 .partnershipHead h2 {
   color: #0b1224;
-  font-size: clamp(54px, 6.4vw, 92px);
-  line-height: .95;
+  font-size: clamp(46px, 5.8vw, 76px);
+  line-height: 1;
   letter-spacing: 0;
 }
 .partnershipHead p {
@@ -286,7 +286,7 @@ body.subPage .reveal {
 .partnerCards {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 34px;
+  gap: 28px;
 }
 .partnerCard,
 .partnerInquiry {
@@ -295,8 +295,8 @@ body.subPage .reveal {
   box-shadow: 0 22px 50px rgba(15,36,59,.08);
 }
 .partnerCard {
-  min-height: 250px;
-  padding: 58px 34px 46px;
+  min-height: 238px;
+  padding: 46px 30px 40px;
   display: grid;
   justify-items: center;
   align-content: center;
@@ -307,7 +307,7 @@ body.subPage .reveal {
   place-items: center;
   width: 86px;
   height: 86px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   border-radius: 999px;
   background: #071020;
   color: #fff;
@@ -323,24 +323,24 @@ body.subPage .reveal {
 }
 .partnerCard h3 {
   color: #050b18;
-  font-size: clamp(30px, 3vw, 42px);
+  font-size: clamp(28px, 2.8vw, 38px);
   letter-spacing: 0;
 }
 .partnerCard p {
-  margin: 22px 0 0;
+  margin: 18px 0 0;
   color: #4a566c;
   font-size: clamp(18px, 1.8vw, 25px);
   line-height: 1.55;
   word-break: keep-all;
 }
 .partnerInquiry {
-  margin-top: 46px;
-  padding: 62px 28px 70px;
+  margin-top: 38px;
+  padding: 52px 28px 58px;
   text-align: center;
 }
 .partnerInquiry h3 {
   color: #0b1224;
-  font-size: clamp(42px, 5vw, 62px);
+  font-size: clamp(38px, 4.5vw, 54px);
   line-height: 1.08;
   letter-spacing: 0;
 }
