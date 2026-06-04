@@ -234,7 +234,7 @@
             <form
               class="contactForm reveal delay1"
               id="contactForm"
-              data-endpoint="https://formspree.io/f/REPLACE_WITH_FORM_ID"
+              data-endpoint="https://formsubmit.co/dltmdwls122789@gmail.com"
             >
               <label>
                 <span>Name</span>
@@ -249,6 +249,8 @@
                 <textarea name="message" rows="5" placeholder="문의 내용을 입력하세요" data-i18n-placeholder="messagePlaceholder" required></textarea>
               </label>
               <input type="hidden" name="_subject" value="[MycoDx] Research collaboration inquiry" />
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
               <button class="btn primary" type="submit">Send Inquiry</button>
               <p class="formStatus" aria-live="polite" data-i18n-status></p>
             </form>
@@ -400,7 +402,7 @@
         const button = form.querySelector('button[type="submit"]');
         const status = form.querySelector('.formStatus');
 
-        if (!endpoint || endpoint.includes('REPLACE_WITH_FORM_ID')) {
+        if (!endpoint) {
           if (status) status.textContent = window.MycoDxI18n?.t('endpointNeeded') || 'Formspree endpoint 설정이 필요합니다.';
           return;
         }
