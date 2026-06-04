@@ -56,8 +56,12 @@ button { color: inherit; }
   transition: box-shadow .35s var(--ease-out), background .35s var(--ease-out);
 }
 .headerInner { height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brandGroup { display: flex; align-items: center; gap: 18px; min-width: 0; }
 .brand img { height: 36px; width: auto; display: block; transition: transform .45s var(--ease-out), opacity .45s var(--ease-out); }
 .brand:hover img { transform: translateY(-1px) scale(1.015); }
+.languageSwitch { display: inline-flex; align-items: center; gap: 4px; padding: 4px; border: 1px solid var(--line); border-radius: 999px; background: rgba(248,250,251,.86); }
+.languageSwitch button { display: inline-flex; align-items: center; gap: 5px; min-height: 28px; padding: 0 9px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); font-size: 12px; font-weight: 850; cursor: pointer; }
+.languageSwitch button.active { background: var(--navy2); color: #fff; }
 main { padding-top: 72px; }
 .desktopNav { display: flex; align-items: center; gap: 22px; font-size: 14px; color: var(--sub); letter-spacing: .01em; }
 .desktopNav a { position: relative; padding: 26px 0; }
@@ -485,6 +489,8 @@ button.boardRow { width: 100%; border-top: 0; border-right: 0; border-left: 0; b
 .contactForm input::placeholder, .contactForm textarea::placeholder { color: rgba(255,255,255,.42); }
 .contactForm input:focus, .contactForm textarea:focus { border-color: rgba(255,255,255,.42); box-shadow: 0 0 0 4px rgba(255,255,255,.08); }
 .contactForm .btn { justify-self: start; }
+.contactForm .btn:disabled { opacity: .62; cursor: progress; transform: none; box-shadow: none; }
+.formStatus { min-height: 22px; margin: -4px 0 0; color: rgba(255,255,255,.72); font-size: 13px; line-height: 1.6; }
 
 .footer { padding: 30px 0; border-top: 1px solid var(--line); background: #fff; }
 .footerStack { display: grid; gap: 18px; }
@@ -676,6 +682,9 @@ button.boardRow { width: 100%; border-top: 0; border-right: 0; border-left: 0; b
   .section { padding: 70px 0; }
   .headerInner { height: 66px; }
   .brand img { height: 30px; }
+  .brandGroup { gap: 10px; }
+  .languageSwitch { padding: 3px; }
+  .languageSwitch button { min-height: 26px; padding: 0 7px; font-size: 11px; }
   .heroGrid { gap: 34px; }
   .lead { font-size: 17px; }
   .camelliaVisual { width: min(220px, 68vw); margin-top: 26px; border-radius: 20px; }

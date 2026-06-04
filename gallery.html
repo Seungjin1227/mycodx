@@ -8,27 +8,33 @@
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body class="subPage">
-    <a class="skip" href="#main">본문으로 바로가기</a>
+    <a class="skip" href="#main" data-i18n="skip">본문으로 바로가기</a>
     <header class="siteHeader" id="top">
       <div class="wrap headerInner">
-        <a class="brand" href="./index.html" aria-label="MycoDx Home">
-          <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
-        </a>
+        <div class="brandGroup">
+          <a class="brand" href="./index.html" aria-label="MycoDx Home">
+            <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
+          </a>
+          <div class="languageSwitch" aria-label="Language selector">
+            <button type="button" data-lang-switch="ko" aria-pressed="true"><span aria-hidden="true">🇰🇷</span>KOR</button>
+            <button type="button" data-lang-switch="en" aria-pressed="false"><span aria-hidden="true">🇺🇸</span>EN</button>
+          </div>
+        </div>
         <nav class="desktopNav" aria-label="Main navigation">
-          <a href="./index.html">About</a>
-          <a href="./news.html" >News</a>
-          <a href="./board.html" >Board</a>
-          <a href="./gallery.html" class="active">Gallery</a>
+          <a href="./index.html" data-i18n="navAbout">About</a>
+          <a href="./news.html" data-i18n="navNews">News</a>
+          <a href="./board.html" data-i18n="navBoard">Board</a>
+          <a href="./gallery.html" class="active" data-i18n="navGallery">Gallery</a>
         </nav>
-        <button class="menuBtn" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+        <button class="menuBtn" type="button" aria-label="모바일 메뉴 열기" data-i18n-aria="menuOpen" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
       <div class="mobileNav" hidden>
-        <a href="./index.html">About</a>
-        <a href="./news.html">News</a>
-        <a href="./board.html">Board</a>
-        <a href="./gallery.html">Gallery</a>
+        <a href="./index.html" data-i18n="navAbout">About</a>
+        <a href="./news.html" data-i18n="navNews">News</a>
+        <a href="./board.html" data-i18n="navBoard">Board</a>
+        <a href="./gallery.html" data-i18n="navGallery">Gallery</a>
       </div>
     </header>
     <main id="main">
@@ -36,7 +42,7 @@
         <div class="wrap subHeroInner reveal">
           <p class="eyebrow">GALLERY</p>
           <h1>Lab Photos</h1>
-          <p class="lead">분자 진단 플랫폼, 임상 검증, 연구 인프라와 협력 과정을 시각적으로 정리한 갤러리입니다.</p>
+          <p class="lead" data-i18n="galleryLead">분자 진단 플랫폼, 임상 검증, 연구 인프라와 협력 과정을 시각적으로 정리한 갤러리입니다.</p>
         </div>
       </section>
       <section class="section gallerySection">
@@ -49,6 +55,7 @@
         <p>© <span id="year"></span> MycoDx. All rights reserved.</p>
       </div>
     </footer>
+    <script src="./js/i18n.js"></script>
     <script src="./js/content-loader.js"></script>
     <script>
       const menuBtn = document.querySelector('.menuBtn');
@@ -82,7 +89,7 @@
     </script>
 
     <div class="lightbox" id="lightbox" hidden>
-      <button class="lightboxClose" type="button" aria-label="닫기">×</button>
+      <button class="lightboxClose" type="button" aria-label="닫기" data-i18n-aria="close">×</button>
       <div class="lightboxInner">
         <div class="lightboxMock"></div>
         <h3 id="lightboxTitle">Lab Photo</h3>

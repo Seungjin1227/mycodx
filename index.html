@@ -9,31 +9,37 @@
   </head>
 
   <body>
-    <a class="skip" href="#main">본문으로 바로가기</a>
+    <a class="skip" href="#main" data-i18n="skip">본문으로 바로가기</a>
 
     <header class="siteHeader" id="top">
       <div class="wrap headerInner">
-        <a class="brand" href="./index.html" aria-label="MycoDx Home">
-          <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
-        </a>
+        <div class="brandGroup">
+          <a class="brand" href="./index.html" aria-label="MycoDx Home">
+            <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
+          </a>
+          <div class="languageSwitch" aria-label="Language selector">
+            <button type="button" data-lang-switch="ko" aria-pressed="true"><span aria-hidden="true">🇰🇷</span>KOR</button>
+            <button type="button" data-lang-switch="en" aria-pressed="false"><span aria-hidden="true">🇺🇸</span>EN</button>
+          </div>
+        </div>
 
         <nav class="desktopNav" aria-label="Main navigation">
-          <a href="./index.html">About</a>
-          <a href="./news.html">News</a>
-          <a href="./board.html">Board</a>
-          <a href="./gallery.html">Gallery</a>
+          <a href="./index.html" data-i18n="navAbout">About</a>
+          <a href="./news.html" data-i18n="navNews">News</a>
+          <a href="./board.html" data-i18n="navBoard">Board</a>
+          <a href="./gallery.html" data-i18n="navGallery">Gallery</a>
         </nav>
 
-        <button class="menuBtn" type="button" aria-label="모바일 메뉴 열기" aria-expanded="false">
+        <button class="menuBtn" type="button" aria-label="모바일 메뉴 열기" data-i18n-aria="menuOpen" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
 
       <div class="mobileNav" hidden>
-        <a href="./index.html">About</a>
-        <a href="./news.html">News</a>
-        <a href="./board.html">Board</a>
-        <a href="./gallery.html">Gallery</a>
+        <a href="./index.html" data-i18n="navAbout">About</a>
+        <a href="./news.html" data-i18n="navNews">News</a>
+        <a href="./board.html" data-i18n="navBoard">Board</a>
+        <a href="./gallery.html" data-i18n="navGallery">Gallery</a>
       </div>
     </header>
 
@@ -43,14 +49,14 @@
         <div class="wrap heroGrid">
           <div class="heroText reveal">
             <p class="eyebrow">MYCODX TB &amp; NTM DIAGNOSTICS</p>
-            <h1>보이지 않는 결핵을, 가장 정확하게 드러내다</h1>
-            <p class="lead">
+            <h1 data-i18n="heroTitle">보이지 않는 결핵을, 가장 정확하게 드러내다</h1>
+            <p class="lead" data-i18n="heroLead">
               MycoDx는 분자 진단 기술과 연구개발 역량을 기반으로 결핵균을 정밀하게 검출하고,
               약제 내성을 신속하게 분석하는 진단 플랫폼을 개발합니다.
             </p>
             <div class="heroActions">
-              <a class="btn primary" href="#research">Core Technology</a>
-              <a class="btn ghost" href="#projects">Development Pipeline</a>
+              <a class="btn primary" href="#research" data-i18n="coreTechnology">Core Technology</a>
+              <a class="btn ghost" href="#projects" data-i18n="developmentPipeline">Development Pipeline</a>
             </div>
           </div>
 
@@ -84,11 +90,11 @@
             </figure>
           </div>
           <div class="prose centeredProse reveal delay1">
-            <p>
+            <p data-i18n="aboutBody1">
               동백꽃(Camellia)은 추운 겨울에도 선명한 붉은 꽃을 피우는 강인함의 상징입니다.
               MycoDx는 이 철학을 담아 보이지 않는 병원체를 정밀하게 검출하고, 가장 어려운 진단 문제를 해결하는 기술 기업입니다.
             </p>
-            <p>
+            <p data-i18n="aboutBody2">
               결핵균(Mycobacterium tuberculosis)과 비결핵항산균(NTM) 진단에 특화된 플랫폼을 개발하며,
               기업부설연구소를 기반으로 임상 현장에서 신뢰할 수 있는 검증된 솔루션을 제공합니다.
             </p>
@@ -107,17 +113,17 @@
             <article class="researchCard reveal">
               <span class="num">01</span>
               <h3>Molecular Detection</h3>
-              <p>분자 기반 검출 기술로 결핵균의 DNA/RNA를 정밀하게 탐지합니다.</p>
+              <p data-i18n="tech1">분자 기반 검출 기술로 결핵균의 DNA/RNA를 정밀하게 탐지합니다.</p>
             </article>
             <article class="researchCard reveal">
               <span class="num">02</span>
               <h3>Drug Resistance Analysis</h3>
-              <p>약제 내성 유전자를 신속하게 분석해 치료 방향 설정을 지원합니다.</p>
+              <p data-i18n="tech2">약제 내성 유전자를 신속하게 분석해 치료 방향 설정을 지원합니다.</p>
             </article>
             <article class="researchCard reveal">
               <span class="num">03</span>
               <h3>Platform Scalability</h3>
-              <p>연구실부터 임상 현장까지 확장 가능한 진단 플랫폼을 구축합니다.</p>
+              <p data-i18n="tech3">연구실부터 임상 현장까지 확장 가능한 진단 플랫폼을 구축합니다.</p>
             </article>
           </div>
         </div>
@@ -128,7 +134,7 @@
           <div class="sectionHead stickyHead reveal">
             <p class="eyebrow">PIPELINE</p>
             <h2>Development Pipeline</h2>
-            <p class="sectionDesc">연구 기반 구축부터 상용화와 글로벌 전개까지 이어지는 개발 로드맵입니다.</p>
+            <p class="sectionDesc" data-i18n="pipelineDesc">연구 기반 구축부터 상용화와 글로벌 전개까지 이어지는 개발 로드맵입니다.</p>
           </div>
 
           <div class="steps reveal delay1">
@@ -136,21 +142,21 @@
               <span>01</span>
               <div>
                 <h3>R&amp;D Foundation</h3>
-                <p>기업부설연구소 기반 핵심 기술 개발 및 진단 플랫폼 최적화.</p>
+                <p data-i18n="pipeline1">기업부설연구소 기반 핵심 기술 개발 및 진단 플랫폼 최적화.</p>
               </div>
             </article>
             <article class="stepItem">
               <span>02</span>
               <div>
                 <h3>Application &amp; Deployment</h3>
-                <p>진단 플랫폼 확장과 상용화를 위한 적용 모델 개발.</p>
+                <p data-i18n="pipeline2">진단 플랫폼 확장과 상용화를 위한 적용 모델 개발.</p>
               </div>
             </article>
             <article class="stepItem">
               <span>03</span>
               <div>
                 <h3>Global Expansion</h3>
-                <p>결핵 진단 기술의 글로벌 시장 진출과 파트너십 확대.</p>
+                <p data-i18n="pipeline3">결핵 진단 기술의 글로벌 시장 진출과 파트너십 확대.</p>
               </div>
             </article>
           </div>
@@ -161,7 +167,7 @@
         <div class="wrap">
           <div class="partnershipHead reveal">
             <h2>Collaboration</h2>
-            <p>함께 만들어가는 진단 기술의 미래</p>
+            <p data-i18n="collabSub">함께 만들어가는 진단 기술의 미래</p>
           </div>
 
           <div class="partnerCards stagger">
@@ -171,8 +177,8 @@
                   <path d="M12 4v16M8 8a4 4 0 0 1 8 0M7 20h10M9 12h6" />
                 </svg>
               </span>
-              <h3>의료기관</h3>
-              <p>임상 시험 및 진단 플랫폼 검증</p>
+              <h3 data-i18n="medical">의료기관</h3>
+              <p data-i18n="medicalDesc">임상 시험 및 진단 플랫폼 검증</p>
             </article>
             <article class="partnerCard reveal">
               <span class="partnerIcon" aria-hidden="true">
@@ -181,8 +187,8 @@
                   <path d="M7 11v5c0 1.7 2.2 3 5 3s5-1.3 5-3v-5" />
                 </svg>
               </span>
-              <h3>연구기관</h3>
-              <p>공동 연구 개발 및 기술 협력</p>
+              <h3 data-i18n="researchOrg">연구기관</h3>
+              <p data-i18n="researchOrgDesc">공동 연구 개발 및 기술 협력</p>
             </article>
             <article class="partnerCard reveal">
               <span class="partnerIcon" aria-hidden="true">
@@ -191,14 +197,14 @@
                   <path d="M10 3h4v4h-4V3ZM10 12h4M10 16h4" />
                 </svg>
               </span>
-              <h3>산업 파트너</h3>
-              <p>상용화 및 글로벌 시장 진출</p>
+              <h3 data-i18n="industry">산업 파트너</h3>
+              <p data-i18n="industryDesc">상용화 및 글로벌 시장 진출</p>
             </article>
           </div>
 
           <div class="partnerInquiry reveal">
-            <h3>파트너십 문의</h3>
-            <p>MycoDx와 함께 결핵 진단의 미래를 만들어갈 파트너를 찾습니다. 연구 협력, 임상 시험, 투자 관련 문의를 환영합니다.</p>
+            <h3 data-i18n="partnershipInquiry">파트너십 문의</h3>
+            <p data-i18n="partnershipDesc">MycoDx와 함께 결핵 진단의 미래를 만들어갈 파트너를 찾습니다. 연구 협력, 임상 시험, 투자 관련 문의를 환영합니다.</p>
             <a class="btn primary" href="#contact">Contact Us</a>
           </div>
         </div>
@@ -209,7 +215,7 @@
           <div class="contactInfo reveal">
             <p class="eyebrow">CONTACT</p>
             <h2>Contact</h2>
-            <p class="sectionDesc">연구 협력, 임상 시험, 투자 및 사업화 관련 문의를 남겨주세요.</p>
+            <p class="sectionDesc" data-i18n="contactDesc">연구 협력, 임상 시험, 투자 및 사업화 관련 문의를 남겨주세요.</p>
           </div>
 
           <div class="contactPanels">
@@ -221,24 +227,30 @@
             >
               <div class="mapFallback">
                 <strong>MycoDx</strong>
-                <span>경상남도 창원시 의창구 용동로83번안길 7</span>
+                <span data-i18n="addressShort">경상남도 창원시 의창구 용동로83번안길 7</span>
               </div>
             </div>
 
-            <form class="contactForm reveal delay1" id="contactForm">
+            <form
+              class="contactForm reveal delay1"
+              id="contactForm"
+              data-endpoint="https://formspree.io/f/REPLACE_WITH_FORM_ID"
+            >
               <label>
                 <span>Name</span>
-                <input type="text" name="name" placeholder="성함" />
+                <input type="text" name="name" placeholder="성함" data-i18n-placeholder="namePlaceholder" required />
               </label>
               <label>
                 <span>Email</span>
-                <input type="email" name="email" placeholder="email@example.com" />
+                <input type="email" name="email" placeholder="email@example.com" required />
               </label>
               <label>
                 <span>Message</span>
-                <textarea name="message" rows="5" placeholder="문의 내용을 입력하세요"></textarea>
+                <textarea name="message" rows="5" placeholder="문의 내용을 입력하세요" data-i18n-placeholder="messagePlaceholder" required></textarea>
               </label>
+              <input type="hidden" name="_subject" value="[MycoDx] Research collaboration inquiry" />
               <button class="btn primary" type="submit">Send Inquiry</button>
+              <p class="formStatus" aria-live="polite" data-i18n-status></p>
             </form>
           </div>
         </div>
@@ -260,13 +272,14 @@
     </footer>
 
     <div class="lightbox" id="lightbox" hidden>
-      <button class="lightboxClose" type="button" aria-label="닫기">×</button>
+      <button class="lightboxClose" type="button" aria-label="닫기" data-i18n-aria="close">×</button>
       <div class="lightboxInner">
         <div class="lightboxMock"></div>
         <h3 id="lightboxTitle">Lab Photo</h3>
       </div>
     </div>
 
+    <script src="./js/i18n.js"></script>
     <script src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=YOUR_KAKAO_JAVASCRIPT_KEY&libraries=services&autoload=false"></script>
 
     <script>
@@ -380,15 +393,38 @@
       };
       initCompanyMap();
 
-      document.getElementById('contactForm')?.addEventListener('submit', (event) => {
+      document.getElementById('contactForm')?.addEventListener('submit', async (event) => {
         event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        const name = data.get('name') || '';
-        const email = data.get('email') || '';
-        const message = data.get('message') || '';
-        const subject = encodeURIComponent('[MycoDx] Research collaboration inquiry');
-        const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
-        window.location.href = `mailto:info@mycodx.com?subject=${subject}&body=${body}`;
+        const form = event.currentTarget;
+        const endpoint = form.dataset.endpoint || '';
+        const button = form.querySelector('button[type="submit"]');
+        const status = form.querySelector('.formStatus');
+
+        if (!endpoint || endpoint.includes('REPLACE_WITH_FORM_ID')) {
+          if (status) status.textContent = window.MycoDxI18n?.t('endpointNeeded') || 'Formspree endpoint 설정이 필요합니다.';
+          return;
+        }
+
+        if (button) button.disabled = true;
+        if (status) status.textContent = window.MycoDxI18n?.t('sending') || '문의 내용을 전송하고 있습니다.';
+
+        try {
+          const response = await fetch(endpoint, {
+            method: 'POST',
+            body: new FormData(form),
+            headers: { Accept: 'application/json' }
+          });
+
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+          form.reset();
+          if (status) status.textContent = window.MycoDxI18n?.t('sent') || '문의가 전송되었습니다.';
+        } catch (error) {
+          console.warn('Contact form submission failed.', error);
+          if (status) status.textContent = window.MycoDxI18n?.t('failed') || '전송에 실패했습니다. 잠시 후 다시 시도해 주세요.';
+        } finally {
+          if (button) button.disabled = false;
+        }
       });
     </script>
   </body>

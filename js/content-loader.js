@@ -99,7 +99,7 @@
     if (body) {
       body.innerHTML = formatBody(
         item.body,
-        '상세 내용이 등록되면 이 영역에 표시됩니다.'
+        window.MycoDxI18n?.t('boardEmpty') || '상세 내용이 등록되면 이 영역에 표시됩니다.'
       );
     }
 
@@ -136,7 +136,7 @@
     if (activeItem) {
       target.innerHTML = `
         <article class="newsDetail reveal isVisible">
-          <a class="newsBack" href="./news.html">목록으로</a>
+          <a class="newsBack" href="./news.html">${escapeHTML(window.MycoDxI18n?.t('boardBack') || '목록으로')}</a>
           <div class="newsDetailVisual thumb newsPhoto ${activeItem.image ? '' : 'newsPhotoPlaceholder'}" ${imageStyle(activeItem.image)}></div>
           <div class="newsDetailBody">
             <time>${escapeHTML(activeItem.date)}</time>
