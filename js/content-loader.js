@@ -85,11 +85,17 @@
     const label = modal.querySelector('[data-board-label]');
     const title = modal.querySelector('[data-board-title]');
     const date = modal.querySelector('[data-board-date]');
+    const image = modal.querySelector('[data-board-image]');
     const body = modal.querySelector('[data-board-body]');
 
     if (label) label.textContent = item.label || 'Notice';
     if (title) title.textContent = item.title || '';
     if (date) date.textContent = item.date || '';
+    if (image) {
+      const src = normalizePath(item.image);
+      image.hidden = !src;
+      image.style.backgroundImage = src ? `url("${escapeHTML(src)}")` : '';
+    }
     if (body) {
       body.innerHTML = formatBody(
         item.body,

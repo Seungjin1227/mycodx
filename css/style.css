@@ -530,10 +530,13 @@ button.boardRow { width: 100%; border-top: 0; border-right: 0; border-left: 0; b
 .lightboxInner { width: min(760px, 100%); padding: 20px; border-radius: 24px; background: #fff; box-shadow: 0 30px 90px rgba(0,0,0,.25); animation: modalIn .42s var(--ease-out) both; }
 .lightboxMock { height: 420px; border-radius: 18px; background: linear-gradient(135deg, #e8eef3, #fff); border: 1px solid var(--line); }
 .lightboxInner h3 { margin: 18px 4px 4px; }
-.boardLightboxInner { width: min(720px, 100%); padding: 30px; }
+.boardLightboxInner { width: min(720px, calc(100vw - 56px)); height: min(620px, calc(100vh - 96px)); display: flex; flex-direction: column; padding: 30px; }
 .boardModalMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 18px; }
 .boardModalMeta time { color: var(--muted); font-size: 14px; font-weight: 750; }
-.boardModalBody { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+.boardLightboxInner h3 { flex: 0 0 auto; }
+.boardModalImage[hidden] { display: none; }
+.boardModalImage { flex: 0 0 auto; width: 100%; aspect-ratio: 16 / 9; max-height: 240px; margin-top: 20px; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background-color: #e5e7eb; background-repeat: no-repeat; background-size: cover; background-position: center; }
+.boardModalBody { flex: 1 1 auto; min-height: 0; margin-top: 22px; padding-top: 22px; padding-right: 8px; border-top: 1px solid var(--line); overflow-y: auto; }
 .boardModalBody p { margin: 0; color: var(--sub); font-size: 16px; line-height: 1.8; word-break: keep-all; }
 .boardModalBody p + p { margin-top: 16px; }
 .lightboxClose { position: fixed; top: 22px; right: 24px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.12); color: #fff; font-size: 30px; line-height: 1; cursor: pointer; }
