@@ -42,6 +42,32 @@
       : '';
   };
 
+  const makeSlug = (item, index) => {
+    const base = `${item.date || index}-${item.title || 'news'}`;
+    return String(base)
+      .trim()
+      .toLowerCase()
+      .replace(/[^a-z0-9가-힣]+/g, '-')
+      .replace(/^-+|-+$/g, '') || `news-${index + 1}`;
+  };
+
+  const enrichNews = (items) => sortByDateDesc(items).map((item, index) => ({
+    ...item,
+    id: item.id || makeSlug(item, index)
+  }));
+
+  const newsDetailBody = (item) => {
+    const body = Array.isArray(item.body) && item.body.length
+      ? item.body
+      : [
+          item.summary,
+          'MycoDx는 연구개발, 임상 검증, 분석 기술 고도화를 통해 현장에서 활용 가능한 분자진단 솔루션을 구축하고 있습니다.',
+          '관련 연구와 협력 소식은 검증 단계에 맞춰 순차적으로 업데이트할 예정입니다.'
+        ];
+
+    return body.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('');
+  };
+
   const emptyState = (type) => {
     const data = emptyMessages[type];
     return `
@@ -63,27 +89,49 @@
       return;
     }
 
-    const [lead, ...rest] = sortByDateDesc(items);
+    const newsItems = enrichNews(items);
+    const params = new URLSearchParams(window.location.search);
+    const activeId = params.get('id') || window.location.hash.replace(/^#/, '');
+    const activeItem = newsItems.find((item) => item.id === activeId);
+
+    if (activeItem) {
+      target.innerHTML = `
+        <article class="newsDetail reveal isVisible">
+          <a class="newsBack" href="./news.html">목록으로</a>
+          <div class="newsDetailVisual thumb ${escapeHTML(activeItem.visual || 'researchThumb')}" ${imageStyle(activeItem.image)}></div>
+          <div class="newsDetailBody">
+            <time>${escapeHTML(activeItem.date)}</time>
+            <h2>${escapeHTML(activeItem.title)}</h2>
+            <div class="prose">
+              ${newsDetailBody(activeItem)}
+            </div>
+          </div>
+        </article>
+      `;
+      return;
+    }
+
+    const [lead, ...rest] = newsItems;
     target.innerHTML = `
       <div class="newsDigest">
-        <article class="newsLeadCard">
+        <a class="newsLeadCard" href="./news.html?id=${encodeURIComponent(lead.id)}">
           <div class="newsLeadVisual thumb ${escapeHTML(lead.visual || 'researchThumb')}" ${imageStyle(lead.image)}></div>
           <div class="newsLeadBody">
             <time>${escapeHTML(lead.date)}</time>
             <h2>${escapeHTML(lead.title)}</h2>
             <p>${escapeHTML(lead.summary)}</p>
           </div>
-        </article>
+        </a>
         <div class="newsDigestList">
           ${rest.map((item) => `
-            <article class="newsDigestItem">
+            <a class="newsDigestItem" href="./news.html?id=${encodeURIComponent(item.id)}">
               <div class="thumb ${escapeHTML(item.visual || 'screenImg')}" ${imageStyle(item.image)}></div>
               <div>
                 <time>${escapeHTML(item.date)}</time>
                 <h3>${escapeHTML(item.title)}</h3>
                 <p>${escapeHTML(item.summary)}</p>
               </div>
-            </article>
+            </a>
           `).join('')}
         </div>
       </div>
