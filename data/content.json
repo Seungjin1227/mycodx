@@ -1,13 +1,4 @@
 {
-  "news": [
-    {
-      "date": "2026.06",
-      "title": "결핵균 및 NTM 진단 플랫폼 연구개발 고도화",
-      "summary": "MycoDx는 결핵균과 비결핵항산균 진단에 특화된 분자진단 플랫폼을 기반으로 임상 현장에서 신뢰할 수 있는 솔루션 개발을 이어가고 있습니다.",
-      "image": "/assets/uploads/2026-04-21-105423.png",
-      "visual": "plateImg"
-    }
-  ],
   "board": [
     {
       "label": "Notice",
@@ -36,12 +27,6 @@
       "title": "기업부설연구소 기반 진단 플랫폼 개발 현황",
       "date": "2026.04.30",
       "url": "#"
-    }
-  ],
-  "gallery": [
-    {
-      "title": "sfsd",
-      "image": "/assets/uploads/2026-04-21-105741.png"
     }
   ]
 }
