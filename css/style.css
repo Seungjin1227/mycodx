@@ -287,6 +287,7 @@ body.subPage .reveal {
 .chip:hover { transform: translateY(-1px); }
 .boardList { display: grid; }
 .boardRow { display: grid; grid-template-columns: 110px 1fr 120px 22px; align-items: center; gap: 20px; padding: 20px 24px; border-bottom: 1px solid var(--line); transition: background .3s var(--ease-out), transform .3s var(--ease-out); }
+button.boardRow { width: 100%; border-top: 0; border-right: 0; border-left: 0; background: #fff; text-align: left; cursor: pointer; }
 .boardRow:last-child { border-bottom: 0; }
 .boardRow:hover { background: #fbfcfd; transform: translateX(4px); }
 .badge { display: inline-flex; justify-content: center; align-items: center; width: fit-content; min-width: 78px; min-height: 28px; padding: 0 10px; border: 1px solid rgba(47,111,115,.22); border-radius: 999px; color: var(--accent); background: rgba(47,111,115,.08); font-size: 12px; font-weight: 850; }
@@ -529,6 +530,12 @@ body.subPage .reveal {
 .lightboxInner { width: min(760px, 100%); padding: 20px; border-radius: 24px; background: #fff; box-shadow: 0 30px 90px rgba(0,0,0,.25); animation: modalIn .42s var(--ease-out) both; }
 .lightboxMock { height: 420px; border-radius: 18px; background: linear-gradient(135deg, #e8eef3, #fff); border: 1px solid var(--line); }
 .lightboxInner h3 { margin: 18px 4px 4px; }
+.boardLightboxInner { width: min(720px, 100%); padding: 30px; }
+.boardModalMeta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 18px; }
+.boardModalMeta time { color: var(--muted); font-size: 14px; font-weight: 750; }
+.boardModalBody { margin-top: 22px; padding-top: 22px; border-top: 1px solid var(--line); }
+.boardModalBody p { margin: 0; color: var(--sub); font-size: 16px; line-height: 1.8; word-break: keep-all; }
+.boardModalBody p + p { margin-top: 16px; }
 .lightboxClose { position: fixed; top: 22px; right: 24px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.12); color: #fff; font-size: 30px; line-height: 1; cursor: pointer; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes modalIn { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -737,7 +744,7 @@ body.subPage .reveal {
   background-repeat: no-repeat;
 }
 .newsPhotoPlaceholder {
-  background-image: none !important;
+  background: #e5e7eb !important;
 }
 .newsPhoto::before,
 .newsPhoto::after {

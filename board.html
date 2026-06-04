@@ -68,5 +68,28 @@
       document.querySelectorAll('.reveal').forEach((el) => el.classList.add('isVisible'));
     </script>
 
+    <div class="lightbox" id="boardLightbox" hidden>
+      <button class="lightboxClose" type="button" aria-label="닫기">×</button>
+      <div class="lightboxInner boardLightboxInner">
+        <div class="boardModalMeta">
+          <span class="badge" data-board-label>Notice</span>
+          <time data-board-date></time>
+        </div>
+        <h3 data-board-title></h3>
+        <div class="boardModalBody" data-board-body></div>
+      </div>
+    </div>
+    <script>
+      const boardLightbox = document.getElementById('boardLightbox');
+      const closeBoardLightbox = () => {
+        boardLightbox.hidden = true;
+        document.body.classList.remove('lock');
+      };
+      boardLightbox?.querySelector('.lightboxClose')?.addEventListener('click', closeBoardLightbox);
+      boardLightbox?.addEventListener('click', (event) => {
+        if (event.target === boardLightbox) closeBoardLightbox();
+      });
+    </script>
+
   </body>
 </html>

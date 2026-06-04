@@ -68,6 +68,39 @@
     return body.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('');
   };
 
+  const formatBody = (value, fallback = '') => {
+    const text = Array.isArray(value) ? value.join('\n\n') : String(value || fallback || '');
+    return text
+      .split(/\n{2,}/)
+      .map((paragraph) => paragraph.trim())
+      .filter(Boolean)
+      .map((paragraph) => `<p>${escapeHTML(paragraph).replace(/\n/g, '<br>')}</p>`)
+      .join('');
+  };
+
+  const openBoardModal = (item) => {
+    const modal = document.getElementById('boardLightbox');
+    if (!modal) return;
+
+    const label = modal.querySelector('[data-board-label]');
+    const title = modal.querySelector('[data-board-title]');
+    const date = modal.querySelector('[data-board-date]');
+    const body = modal.querySelector('[data-board-body]');
+
+    if (label) label.textContent = item.label || 'Notice';
+    if (title) title.textContent = item.title || '';
+    if (date) date.textContent = item.date || '';
+    if (body) {
+      body.innerHTML = formatBody(
+        item.body,
+        '상세 내용이 등록되면 이 영역에 표시됩니다.'
+      );
+    }
+
+    modal.hidden = false;
+    document.body.classList.add('lock');
+  };
+
   const emptyState = (type) => {
     const data = emptyMessages[type];
     return `
@@ -146,17 +179,24 @@
       return;
     }
 
+    const boardItems = sortByDateDesc(items);
     target.innerHTML = `
       <div class="boardList">
-        ${sortByDateDesc(items).map((item) => `
-          <a href="${escapeHTML(item.url || '#')}" class="boardRow" data-category="${escapeHTML(item.category || 'notice')}">
+        ${boardItems.map((item, index) => `
+          <button type="button" class="boardRow" data-board-index="${index}" data-category="${escapeHTML(item.category || 'notice')}">
             <span class="badge">${escapeHTML(item.label || 'Notice')}</span>
             <strong>${escapeHTML(item.title)}</strong>
             <time>${escapeHTML(item.date)}</time>
-          </a>
+          </button>
         `).join('')}
       </div>
     `;
+
+    target.querySelectorAll('[data-board-index]').forEach((row) => {
+      row.addEventListener('click', () => {
+        openBoardModal(boardItems[Number(row.dataset.boardIndex)]);
+      });
+    });
   };
 
   const renderGallery = (items) => {
