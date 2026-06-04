@@ -235,6 +235,7 @@
               class="contactForm reveal delay1"
               id="contactForm"
               data-endpoint="https://formsubmit.co/dltmdwls122789@gmail.com"
+              novalidate
             >
               <label>
                 <span>Name</span>
@@ -401,6 +402,34 @@
         const endpoint = form.dataset.endpoint || '';
         const button = form.querySelector('button[type="submit"]');
         const status = form.querySelector('.formStatus');
+        const name = form.elements.name;
+        const email = form.elements.email;
+        const message = form.elements.message;
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!name.value.trim()) {
+          if (status) status.textContent = window.MycoDxI18n?.t('requiredName') || '이름을 입력해 주세요.';
+          name.focus();
+          return;
+        }
+
+        if (!email.value.trim()) {
+          if (status) status.textContent = window.MycoDxI18n?.t('requiredEmail') || '이메일 주소를 입력해 주세요.';
+          email.focus();
+          return;
+        }
+
+        if (!emailPattern.test(email.value.trim())) {
+          if (status) status.textContent = window.MycoDxI18n?.t('invalidEmail') || '올바른 이메일 주소를 입력해 주세요.';
+          email.focus();
+          return;
+        }
+
+        if (!message.value.trim()) {
+          if (status) status.textContent = window.MycoDxI18n?.t('requiredMessage') || '문의 내용을 입력해 주세요.';
+          message.focus();
+          return;
+        }
 
         if (!endpoint) {
           if (status) status.textContent = window.MycoDxI18n?.t('endpointNeeded') || 'Formspree endpoint 설정이 필요합니다.';
