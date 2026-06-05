@@ -330,9 +330,12 @@
   };
 
   const initTeamCarousel = (target) => {
+    if (typeof target._teamCarouselCleanup === 'function') {
+      target._teamCarouselCleanup();
+    }
+
     const track = target.querySelector('.teamTrack');
-    if (!track || target.dataset.carouselReady === 'true') return;
-    target.dataset.carouselReady = 'true';
+    if (!track) return;
 
     let isDragging = false;
     let startX = 0;
@@ -363,19 +366,19 @@
       frame = requestAnimationFrame(tick);
     };
 
-    target.addEventListener('pointerdown', (event) => {
+    const onPointerDown = (event) => {
       isDragging = true;
       startX = event.clientX;
       startOffset = offset;
       target.classList.add('isDragging');
       target.setPointerCapture?.(event.pointerId);
-    });
+    };
 
-    target.addEventListener('pointermove', (event) => {
+    const onPointerMove = (event) => {
       if (!isDragging) return;
       offset = startOffset + (event.clientX - startX);
       applyOffset();
-    });
+    };
 
     const stopDrag = (event) => {
       if (!isDragging) return;
@@ -385,23 +388,39 @@
       applyOffset();
     };
 
-    target.addEventListener('pointerup', stopDrag);
-    target.addEventListener('pointercancel', stopDrag);
-    target.addEventListener('mouseleave', () => {
+    const onMouseLeave = () => {
       isDragging = false;
       target.classList.remove('isDragging');
       applyOffset();
-    });
+    };
 
-    frame = requestAnimationFrame(tick);
-    document.addEventListener('visibilitychange', () => {
+    const onVisibilityChange = () => {
       if (document.hidden) {
         cancelAnimationFrame(frame);
       } else {
         lastTime = performance.now();
         frame = requestAnimationFrame(tick);
       }
-    });
+    };
+
+    target.addEventListener('pointerdown', onPointerDown);
+    target.addEventListener('pointermove', onPointerMove);
+    target.addEventListener('pointerup', stopDrag);
+    target.addEventListener('pointercancel', stopDrag);
+    target.addEventListener('mouseleave', onMouseLeave);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    frame = requestAnimationFrame(tick);
+    target._teamCarouselCleanup = () => {
+      cancelAnimationFrame(frame);
+      target.removeEventListener('pointerdown', onPointerDown);
+      target.removeEventListener('pointermove', onPointerMove);
+      target.removeEventListener('pointerup', stopDrag);
+      target.removeEventListener('pointercancel', stopDrag);
+      target.removeEventListener('mouseleave', onMouseLeave);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+      delete target._teamCarouselCleanup;
+    };
   };
 
   const renderTeam = (items) => {
