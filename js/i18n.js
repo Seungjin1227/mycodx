@@ -20,6 +20,7 @@
       pipeline1: '기업부설연구소 기반 핵심 기술 개발 및 진단 플랫폼 최적화.',
       pipeline2: '진단 플랫폼 확장과 상용화를 위한 적용 모델 개발.',
       pipeline3: '결핵 진단 기술의 글로벌 시장 진출과 파트너십 확대.',
+      teamDesc: '분자진단 연구개발, 임상 검증, 사업화를 함께 이끄는 MycoDx 팀을 소개합니다.',
       collabSub: '함께 만들어가는 진단 기술의 미래',
       medical: '의료기관',
       medicalDesc: '임상 시험 및 진단 플랫폼 검증',
@@ -30,7 +31,9 @@
       partnershipInquiry: '파트너십 문의',
       partnershipDesc: 'MycoDx와 함께 결핵 진단의 미래를 만들어갈 파트너를 찾습니다. 연구 협력, 임상 시험, 투자 관련 문의를 환영합니다.',
       contactDesc: '연구 협력, 임상 시험, 투자 및 사업화 관련 문의를 남겨주세요.',
+      addressFull: '51139 경상남도 창원시 의창구 용동로83번안길 7 미래빌딩 202호',
       addressShort: '경상남도 창원시 의창구 용동로83번안길 7',
+      addressLabel: 'Address',
       namePlaceholder: '성함',
       messagePlaceholder: '문의 내용을 입력하세요',
       sending: '문의 내용을 전송하고 있습니다.',
@@ -46,7 +49,8 @@
       galleryLead: '분자 진단 플랫폼, 임상 검증, 연구 인프라와 협력 과정을 시각적으로 정리한 갤러리입니다.',
       boardBack: '목록으로',
       boardEmpty: '상세 내용이 등록되면 이 영역에 표시됩니다.',
-      close: '닫기'
+      close: '닫기',
+      none: '없음'
     },
     en: {
       skip: 'Skip to main content',
@@ -68,6 +72,7 @@
       pipeline1: 'Core technology development and diagnostic platform optimization through our corporate R&D center.',
       pipeline2: 'Application model development for platform expansion and commercialization.',
       pipeline3: 'Global market expansion and partnerships for tuberculosis diagnostic technology.',
+      teamDesc: 'Meet the MycoDx team leading molecular diagnostics R&D, clinical validation, and commercialization.',
       collabSub: 'Building the future of diagnostics together',
       medical: 'Medical Institutions',
       medicalDesc: 'Clinical trials and diagnostic platform evaluation',
@@ -78,7 +83,9 @@
       partnershipInquiry: 'Partnership Inquiry',
       partnershipDesc: 'MycoDx is looking for partners to build the future of tuberculosis diagnostics together. We welcome inquiries about research collaboration, clinical trials, and investment.',
       contactDesc: 'Send us inquiries about research collaboration, clinical trials, investment, or commercialization.',
+      addressFull: 'Room 202, Mirae Building, 7 Yongdong-ro 83beonan-gil, Uichang-gu, Changwon-si, Gyeongsangnam-do 51139, Republic of Korea',
       addressShort: '7 Yongdong-ro 83beonan-gil, Uichang-gu, Changwon-si, Gyeongsangnam-do',
+      addressLabel: 'Address',
       namePlaceholder: 'Name',
       messagePlaceholder: 'Enter your message',
       sending: 'Sending your inquiry.',
@@ -94,7 +101,8 @@
       galleryLead: 'A visual archive of molecular diagnostic platforms, clinical validation, research infrastructure, and collaboration.',
       boardBack: 'Back to list',
       boardEmpty: 'Detailed content will appear here once it is registered.',
-      close: 'Close'
+      close: 'Close',
+      none: 'None'
     }
   };
 

@@ -317,7 +317,17 @@
     .toUpperCase() || 'M';
 
   const currentLang = () => document.documentElement.dataset.lang || localStorage.getItem('mycodx-lang') || 'ko';
-  const noneText = () => (currentLang() === 'en' ? 'None' : '없음');
+  const noneText = () => window.MycoDxI18n?.t('none') || (currentLang() === 'en' ? 'None' : '없음');
+  const localizedTeamValue = (item, key) => {
+    const lang = currentLang();
+    const enKey = `${key}En`;
+    const koKey = `${key}Ko`;
+    const preferred = lang === 'en' ? item[enKey] : item[koKey];
+    const fallback = item[key];
+    const value = preferred || fallback || noneText();
+    if (lang === 'en' && String(value).trim() === '없음') return noneText();
+    return value;
+  };
 
   const initTeamCarousel = (target) => {
     const track = target.querySelector('.teamTrack');
@@ -411,9 +421,9 @@
     const cardHTML = (item) => {
       const src = normalizePath(item.image);
       const hasImage = Boolean(src);
-      const name = item.name || noneText();
-      const role = item.role || noneText();
-      const summary = item.summary || noneText();
+      const name = localizedTeamValue(item, 'name');
+      const role = localizedTeamValue(item, 'role');
+      const summary = localizedTeamValue(item, 'summary');
 
       return `
         <article class="teamCard">
