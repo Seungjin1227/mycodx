@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const emptyMessages = {
     news: {
       icon: 'N',
@@ -8,14 +8,92 @@
     board: {
       icon: 'B',
       title: '등록된 게시글이 없습니다',
-      body: '공지사항, 연구 업데이트, 행사 안내가 준비되면 이곳에 목록으로 게시됩니다.'
+      body: '공지사항, 연구 업데이트, 행사 안내가 준비되면 목록으로 게시됩니다.'
     },
     gallery: {
       icon: 'G',
       title: '등록된 갤러리 이미지가 없습니다',
-      body: '연구 사진, 실험실 이미지, 행사 사진이 준비되면 이곳에 갤러리 형태로 게시됩니다.'
+      body: '연구 사진, 실험실 이미지, 행사 사진이 준비되면 갤러리 형태로 게시됩니다.'
     }
   };
+
+  const defaultContent = {
+    news: [
+      {
+        date: '2026.06.04',
+        title: 'MycoDx 공식 웹사이트 오픈',
+        summary: '분자진단 플랫폼 연구개발과 협력 소식을 전하는 공식 웹사이트를 오픈했습니다.',
+        visual: 'plateImg'
+      },
+      {
+        date: '2026.05.28',
+        title: '결핵 및 NTM 분자진단 연구 업데이트',
+        summary: '결핵균과 비결핵항산균 진단을 위한 assay 연구와 검증 과정을 지속하고 있습니다.',
+        visual: 'screenImg'
+      }
+    ],
+    board: [
+      {
+        label: 'Notice',
+        category: 'notice',
+        title: 'MycoDx 웹사이트 오픈 안내',
+        date: '2026.06.04',
+        body: 'MycoDx 공식 웹사이트가 오픈했습니다.\n\n분자진단 플랫폼 연구개발 소식, 공지사항, 갤러리 콘텐츠를 순차적으로 업데이트할 예정입니다.',
+        url: '#'
+      },
+      {
+        label: 'Research',
+        category: 'research',
+        title: '결핵균 및 NTM 분자진단 assay 연구 업데이트',
+        date: '2026.05.28',
+        body: '결핵균 및 비결핵항산균 진단을 위한 assay 연구 업데이트입니다.\n\n임상 검증과 분석 정확도 향상을 목표로 주요 검출 프로세스를 지속적으로 고도화하고 있습니다.',
+        url: '#'
+      },
+      {
+        label: 'Event',
+        category: 'event',
+        title: '공동 연구 및 기술 검증 파트너십 문의 안내',
+        date: '2026.05.12',
+        body: '공동 연구, 기술 검증, 임상 협력과 관련된 파트너십 문의를 받고 있습니다.\n\n협력 제안은 문의 채널을 통해 접수해 주시면 담당자가 검토 후 안내드립니다.',
+        url: '#'
+      }
+    ],
+    gallery: [
+      {
+        title: 'Diagnostic Platform',
+        visual: 'plateImg'
+      },
+      {
+        title: 'Molecular Analysis',
+        visual: 'screenImg'
+      },
+      {
+        title: 'Research Workflow',
+        visual: 'tubeImg'
+      }
+    ],
+    team: [
+      {
+        order: 1,
+        name: '없음',
+        role: '없음',
+        summary: '없음'
+      },
+      {
+        order: 2,
+        name: '없음',
+        role: '없음',
+        summary: '없음'
+      },
+      {
+        order: 3,
+        name: '없음',
+        role: '없음',
+        summary: '없음'
+      }
+    ]
+  };
+  let lastContent = null;
 
   const escapeHTML = (value) => String(value || '').replace(/[&<>"']/g, (char) => ({
     '&': '&amp;',
@@ -44,11 +122,13 @@
 
   const makeSlug = (item, index) => {
     const base = `${item.date || index}-${item.title || 'news'}`;
-    return String(base)
+    const slug = String(base)
       .trim()
       .toLowerCase()
-      .replace(/[^a-z0-9가-힣]+/g, '-')
-      .replace(/^-+|-+$/g, '') || `news-${index + 1}`;
+      .replace(/[^\p{L}\p{N}]+/gu, '-')
+      .replace(/^-+|-+$/g, '');
+
+    return slug || `news-${index + 1}`;
   };
 
   const enrichNews = (items) => sortByDateDesc(items).map((item, index) => ({
@@ -61,8 +141,8 @@
       ? item.body
       : [
           item.summary,
-          'MycoDx는 연구개발, 임상 검증, 분석 기술 고도화를 통해 현장에서 활용 가능한 분자진단 솔루션을 구축하고 있습니다.',
-          '관련 연구와 협력 소식은 검증 단계에 맞춰 순차적으로 업데이트할 예정입니다.'
+          'MycoDx는 연구개발, 임상 검증, 분석 기술 고도화를 통해 현장에서 사용할 수 있는 분자진단 솔루션을 구축하고 있습니다.',
+          '관련 연구와 협력 소식은 검증 단계에 맞춰 순차적으로 업데이트될 예정입니다.'
         ];
 
     return body.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('');
@@ -136,7 +216,7 @@
     if (activeItem) {
       target.innerHTML = `
         <article class="newsDetail reveal isVisible">
-          <a class="newsBack" href="./news.html">${escapeHTML(window.MycoDxI18n?.t('boardBack') || '목록으로')}</a>
+          <a class="newsBack" href="./news.html">${escapeHTML(window.MycoDxI18n?.t('boardBack') || '紐⑸줉?쇰줈')}</a>
           <div class="newsDetailVisual thumb newsPhoto ${activeItem.image ? '' : 'newsPhotoPlaceholder'}" ${imageStyle(activeItem.image)}></div>
           <div class="newsDetailBody">
             <time>${escapeHTML(activeItem.date)}</time>
@@ -228,10 +308,146 @@
     `;
   };
 
+  const initials = (name) => String(name || 'M')
+    .trim()
+    .split(/\s+/)
+    .map((part) => part[0])
+    .join('')
+    .slice(0, 2)
+    .toUpperCase() || 'M';
+
+  const currentLang = () => document.documentElement.dataset.lang || localStorage.getItem('mycodx-lang') || 'ko';
+  const noneText = () => (currentLang() === 'en' ? 'None' : '없음');
+
+  const initTeamCarousel = (target) => {
+    const track = target.querySelector('.teamTrack');
+    if (!track || target.dataset.carouselReady === 'true') return;
+    target.dataset.carouselReady = 'true';
+
+    let isDragging = false;
+    let startX = 0;
+    let startOffset = 0;
+    let offset = 0;
+    let frame = 0;
+    let lastTime = performance.now();
+    const speed = 18;
+    const loopWidth = () => Math.max(0, track.scrollWidth / 2);
+    const normalizeOffset = () => {
+      const width = loopWidth();
+      if (!width) return;
+      while (offset <= -width) offset += width;
+      while (offset > 0) offset -= width;
+    };
+    const applyOffset = () => {
+      normalizeOffset();
+      track.style.transform = `translate3d(${offset}px, 0, 0)`;
+    };
+
+    const tick = (time) => {
+      const delta = Math.min(48, time - lastTime);
+      lastTime = time;
+      if (!isDragging) {
+        offset -= (speed * delta) / 1000;
+        applyOffset();
+      }
+      frame = requestAnimationFrame(tick);
+    };
+
+    target.addEventListener('pointerdown', (event) => {
+      isDragging = true;
+      startX = event.clientX;
+      startOffset = offset;
+      target.classList.add('isDragging');
+      target.setPointerCapture?.(event.pointerId);
+    });
+
+    target.addEventListener('pointermove', (event) => {
+      if (!isDragging) return;
+      offset = startOffset + (event.clientX - startX);
+      applyOffset();
+    });
+
+    const stopDrag = (event) => {
+      if (!isDragging) return;
+      isDragging = false;
+      target.classList.remove('isDragging');
+      target.releasePointerCapture?.(event.pointerId);
+      applyOffset();
+    };
+
+    target.addEventListener('pointerup', stopDrag);
+    target.addEventListener('pointercancel', stopDrag);
+    target.addEventListener('mouseleave', () => {
+      isDragging = false;
+      target.classList.remove('isDragging');
+      applyOffset();
+    });
+
+    frame = requestAnimationFrame(tick);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        cancelAnimationFrame(frame);
+      } else {
+        lastTime = performance.now();
+        frame = requestAnimationFrame(tick);
+      }
+    });
+  };
+
+  const renderTeam = (items) => {
+    const target = document.getElementById('teamContent');
+    if (!target) return;
+
+    const teamItems = Array.isArray(items) ? [...items] : [];
+    teamItems.sort((a, b) => Number(a.order || 999) - Number(b.order || 999));
+    const placeholders = [
+      { order: 1, name: noneText(), role: noneText(), summary: noneText() },
+      { order: 2, name: noneText(), role: noneText(), summary: noneText() },
+      { order: 3, name: noneText(), role: noneText(), summary: noneText() },
+      { order: 4, name: noneText(), role: noneText(), summary: noneText() }
+    ];
+    const visibleItems = teamItems.length ? teamItems : placeholders;
+
+    const cardHTML = (item) => {
+      const src = normalizePath(item.image);
+      const hasImage = Boolean(src);
+      const name = item.name || noneText();
+      const role = item.role || noneText();
+      const summary = item.summary || noneText();
+
+      return `
+        <article class="teamCard">
+          ${
+            hasImage
+              ? `<img class="teamPortrait" src="${escapeHTML(src)}" alt="${escapeHTML(name)}" />`
+              : `<div class="teamPortrait teamPortraitFallback" aria-hidden="true">${escapeHTML(noneText())}</div>`
+          }
+          <div>
+            <p class="teamRole">${escapeHTML(role)}</p>
+            <h3>${escapeHTML(name)}</h3>
+            <p>${escapeHTML(summary)}</p>
+          </div>
+        </article>
+      `;
+    };
+
+    target.innerHTML = `
+      <div class="teamTrack">
+        ${visibleItems.map(cardHTML).join('')}
+        ${visibleItems.map(cardHTML).join('')}
+      </div>
+    `;
+
+    target.scrollLeft = 0;
+    initTeamCarousel(target);
+  };
+
   const renderAll = (content) => {
+    lastContent = content;
     renderNews(Array.isArray(content.news) ? content.news : []);
     renderBoard(Array.isArray(content.board) ? content.board : []);
     renderGallery(Array.isArray(content.gallery) ? content.gallery : []);
+    renderTeam(Array.isArray(content.team) ? content.team : []);
     document.dispatchEvent(new CustomEvent('content:rendered'));
   };
 
@@ -241,10 +457,14 @@
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       return await response.json();
     } catch (error) {
-      console.warn('content.json을 불러오지 못해 window.MYCODX_CONTENT fallback을 사용합니다.', error);
-      return window.MYCODX_CONTENT || { news: [], board: [], gallery: [] };
+      console.warn('content.json??遺덈윭?ㅼ? 紐삵빐 window.MYCODX_CONTENT fallback???ъ슜?⑸땲??', error);
+      return window.MYCODX_CONTENT || defaultContent;
     }
   };
+
+  document.addEventListener('language:changed', () => {
+    if (lastContent) renderAll(lastContent);
+  });
 
   loadContent().then(renderAll);
 })();

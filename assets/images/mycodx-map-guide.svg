@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">MycoDx 위치 약도</title>
+  <desc id="desc">경상남도 창원시 의창구 용동로83번안길 7 미래빌딩 202호 위치 안내용 단순 약도</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#eef3f7"/>
+    </linearGradient>
+    <linearGradient id="navy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#18324f"/>
+      <stop offset="100%" stop-color="#0f243b"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#18324f" flood-opacity="0.16"/>
+    </filter>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#18324f" stroke-opacity="0.055" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="760" rx="36" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="36" fill="url(#grid)"/>
+  <circle cx="105" cy="115" r="120" fill="#a11a2f" opacity="0.08"/>
+  <circle cx="1080" cy="630" r="180" fill="#2f6f73" opacity="0.09"/>
+
+  <rect x="92" y="72" width="1016" height="616" rx="32" fill="#ffffff" opacity="0.96" filter="url(#shadow)"/>
+
+  <text x="132" y="135" fill="#a11a2f" font-family="Arial, sans-serif" font-size="18" font-weight="800" letter-spacing="2">LOCATION GUIDE</text>
+  <text x="132" y="185" fill="#0f243b" font-family="Arial, sans-serif" font-size="48" font-weight="800">MycoDx 위치 안내</text>
+  <text x="132" y="226" fill="#5f6b7a" font-family="Arial, sans-serif" font-size="22">경상남도 창원시 의창구 용동로83번안길 7 미래빌딩 202호</text>
+
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M170 500 C310 400, 430 375, 560 425 S850 540, 1010 430" stroke="#d8e1e8" stroke-width="56"/>
+    <path d="M170 500 C310 400, 430 375, 560 425 S850 540, 1010 430" stroke="#ffffff" stroke-width="38"/>
+    <path d="M230 615 L430 485 L675 340 L940 205" stroke="#d8e1e8" stroke-width="44"/>
+    <path d="M230 615 L430 485 L675 340 L940 205" stroke="#ffffff" stroke-width="28"/>
+    <path d="M730 620 L690 478 L675 340 L630 190" stroke="#d8e1e8" stroke-width="38"/>
+    <path d="M730 620 L690 478 L675 340 L630 190" stroke="#ffffff" stroke-width="22"/>
+    <path d="M390 270 H785" stroke="#d8e1e8" stroke-width="32"/>
+    <path d="M390 270 H785" stroke="#ffffff" stroke-width="18"/>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="185" y="545" width="205" height="72" rx="18" fill="#f3f7fa" stroke="#dfe5ea"/>
+    <text x="287" y="574" text-anchor="middle" fill="#18324f" font-family="Arial, sans-serif" font-size="20" font-weight="800">창원중앙역</text>
+    <text x="287" y="602" text-anchor="middle" fill="#8a95a3" font-family="Arial, sans-serif" font-size="15">Changwon Jungang</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="775" y="180" width="190" height="70" rx="18" fill="#f3f7fa" stroke="#dfe5ea"/>
+    <text x="870" y="224" text-anchor="middle" fill="#18324f" font-family="Arial, sans-serif" font-size="20" font-weight="800">용동로83번안길</text>
+  </g>
+
+  <g filter="url(#shadow)">
+    <rect x="515" y="260" width="185" height="64" rx="18" fill="#f3f7fa" stroke="#dfe5ea"/>
+    <text x="607" y="300" text-anchor="middle" fill="#18324f" font-family="Arial, sans-serif" font-size="19" font-weight="800">미래빌딩</text>
+  </g>
+
+  <g transform="translate(690 360)" filter="url(#shadow)">
+    <path d="M0-92C-50-92-91-52-91-2c0 70 91 156 91 156S91 68 91-2c0-50-41-90-91-90z" fill="#a11a2f"/>
+    <circle cx="0" cy="-6" r="34" fill="#ffffff"/>
+    <text x="0" y="3" text-anchor="middle" fill="#a11a2f" font-family="Arial, sans-serif" font-size="26" font-weight="900">M</text>
+  </g>
+
+  <rect x="740" y="348" width="300" height="132" rx="24" fill="url(#navy)" filter="url(#shadow)"/>
+  <text x="770" y="394" fill="#ffffff" font-family="Arial, sans-serif" font-size="30" font-weight="900">MycoDx</text>
+  <text x="770" y="430" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="18">미래빌딩 202호</text>
+  <text x="770" y="460" fill="#cbd5e1" font-family="Arial, sans-serif" font-size="16">용동로83번안길 7</text>
+
+  <g fill="none" stroke="#a11a2f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M365 560 C455 510, 545 455, 650 405" stroke-dasharray="16 16"/>
+    <path d="M650 405 L619 402 M650 405 L632 431"/>
+  </g>
+
+  <rect x="132" y="285" width="278" height="116" rx="22" fill="#f8fafc" stroke="#dfe5ea"/>
+  <text x="162" y="326" fill="#0f243b" font-family="Arial, sans-serif" font-size="22" font-weight="900">주소</text>
+  <text x="162" y="362" fill="#5f6b7a" font-family="Arial, sans-serif" font-size="17">경상남도 창원시 의창구</text>
+  <text x="162" y="390" fill="#5f6b7a" font-family="Arial, sans-serif" font-size="17">용동로83번안길 7</text>
+
+  <text x="600" y="662" text-anchor="middle" fill="#8a95a3" font-family="Arial, sans-serif" font-size="14">※ 본 약도는 위치 안내용으로 직접 제작한 단순 도식이며 실제 지도 축척과 다를 수 있습니다.</text>
+</svg>

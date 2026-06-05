@@ -1,5 +1,3 @@
-# Decap CMS optional fallback config.
-# 사용하려면 repo 값을 실제 GitHub 저장소로 바꾸고 GitHub OAuth를 설정해야 합니다.
 backend:
   name: github
   repo: mycodx84/mycodx84.github.io
@@ -10,64 +8,75 @@ public_folder: "/assets/uploads"
 
 collections:
   - name: "site_content"
-    label: "홈페이지 콘텐츠"
+    label: "Site Content"
     files:
       - name: "content"
-        label: "뉴스 / 게시판 / 갤러리"
+        label: "Content"
         file: "data/content.json"
         format: "json"
         fields:
-          - label: "뉴스"
+          - label: "Team"
+            name: "team"
+            widget: "list"
+            summary: "{{fields.order}}. {{fields.name}} - {{fields.role}}"
+            fields:
+              - { label: "Order", name: "order", widget: "number", value_type: "int", default: 1 }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Photo", name: "image", widget: "image", required: false }
+
+          - label: "News"
             name: "news"
             widget: "list"
-            summary: "{{fields.date}} · {{fields.title}}"
+            summary: "{{fields.date}} - {{fields.title}}"
             fields:
-              - { label: "날짜", name: "date", widget: "string", hint: "예: 2026.06.04 또는 2026.06" }
-              - { label: "제목", name: "title", widget: "string" }
-              - { label: "요약 내용", name: "summary", widget: "text" }
-              - { label: "대표 이미지", name: "image", widget: "image", required: false }
-              - label: "기본 그래픽"
+              - { label: "Date", name: "date", widget: "string", hint: "Example: 2026.06.04 or 2026.06" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Summary", name: "summary", widget: "text" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - label: "Fallback Visual"
                 name: "visual"
                 widget: "select"
                 required: false
                 options:
-                  - { label: "배양 플레이트", value: "plateImg" }
-                  - { label: "분석 화면", value: "screenImg" }
-                  - { label: "튜브/검체", value: "tubeImg" }
-                  - { label: "연구 썸네일", value: "researchThumb" }
+                  - { label: "Plate", value: "plateImg" }
+                  - { label: "Analysis Screen", value: "screenImg" }
+                  - { label: "Tube", value: "tubeImg" }
+                  - { label: "Research", value: "researchThumb" }
 
-          - label: "게시판"
+          - label: "Board"
             name: "board"
             widget: "list"
-            summary: "{{fields.date}} · {{fields.title}}"
+            summary: "{{fields.date}} - {{fields.title}}"
             fields:
-              - { label: "표시 라벨", name: "label", widget: "string", hint: "예: Notice, Research, Event" }
-              - label: "카테고리"
+              - { label: "Label", name: "label", widget: "string", hint: "Example: Notice, Research, Event" }
+              - label: "Category"
                 name: "category"
                 widget: "select"
                 options:
-                  - { label: "공지", value: "notice" }
-                  - { label: "연구", value: "research" }
-                  - { label: "행사", value: "event" }
-              - { label: "제목", name: "title", widget: "string" }
-              - { label: "날짜", name: "date", widget: "string", hint: "예: 2026.06.04" }
-              - { label: "이미지", name: "image", widget: "image", required: false }
-              - { label: "상세 내용", name: "body", widget: "text", required: false, hint: "게시판에서 항목을 클릭하면 모달로 표시됩니다." }
-              - { label: "연결 링크", name: "url", widget: "string", required: false, hint: "상세 페이지가 없으면 # 그대로 두세요." }
+                  - { label: "Notice", value: "notice" }
+                  - { label: "Research", value: "research" }
+                  - { label: "Event", value: "event" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "string", hint: "Example: 2026.06.04" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Body", name: "body", widget: "text", required: false }
+              - { label: "URL", name: "url", widget: "string", required: false }
 
-          - label: "갤러리"
+          - label: "Gallery"
             name: "gallery"
             widget: "list"
             summary: "{{fields.title}}"
             fields:
-              - { label: "사진 제목", name: "title", widget: "string" }
-              - { label: "사진", name: "image", widget: "image", required: false }
-              - label: "사진이 없을 때 기본 그래픽"
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - label: "Fallback Visual"
                 name: "visual"
                 widget: "select"
                 required: false
                 options:
-                  - { label: "배양 플레이트", value: "plateImg" }
-                  - { label: "분석 화면", value: "screenImg" }
-                  - { label: "튜브/검체", value: "tubeImg" }
-                  - { label: "연구 썸네일", value: "researchThumb" }
+                  - { label: "Plate", value: "plateImg" }
+                  - { label: "Analysis Screen", value: "screenImg" }
+                  - { label: "Tube", value: "tubeImg" }
+                  - { label: "Research", value: "researchThumb" }

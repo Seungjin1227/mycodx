@@ -18,8 +18,8 @@
             <img src="./assets/images/logo-horizontal.png" alt="MycoDx" />
           </a>
           <div class="languageSwitch" aria-label="Language selector">
-            <button type="button" data-lang-switch="ko" aria-pressed="true"><span class="flagIcon"><img src="./assets/images/flag-kr.svg" alt="" /></span>KOR</button>
-            <button type="button" data-lang-switch="en" aria-pressed="false"><span class="flagIcon"><img src="./assets/images/flag-us.svg" alt="" /></span>EN</button>
+            <button type="button" data-lang-switch="ko" aria-pressed="true"><span class="flagIcon"><img src="./assets/images/flag-kr.png" alt="" /></span>KOR</button>
+            <button type="button" data-lang-switch="en" aria-pressed="false"><span class="flagIcon"><img src="./assets/images/flag-us.png" alt="" /></span>EN</button>
           </div>
         </div>
 
@@ -80,7 +80,7 @@
         </div>
       </section>
 
-      <section class="section" id="about">
+      <section class="section aboutSection" id="about">
         <div class="wrap split">
           <div class="reveal">
             <p class="eyebrow">ABOUT</p>
@@ -102,7 +102,7 @@
         </div>
       </section>
 
-      <section class="section mutedSection" id="research">
+      <section class="section technologySection mutedSection" id="research">
         <div class="wrap">
           <div class="sectionHead reveal">
             <p class="eyebrow">TECHNOLOGY</p>
@@ -129,37 +129,57 @@
         </div>
       </section>
 
-      <section class="section" id="projects">
-        <div class="wrap platformGrid">
-          <div class="sectionHead stickyHead reveal">
+      <section class="section pipelineSection" id="projects">
+        <div class="wrap pipelineLayout">
+          <div class="pipelineIntro reveal">
             <p class="eyebrow">PIPELINE</p>
             <h2>Development Pipeline</h2>
             <p class="sectionDesc" data-i18n="pipelineDesc">연구 기반 구축부터 상용화와 글로벌 전개까지 이어지는 개발 로드맵입니다.</p>
           </div>
 
-          <div class="steps reveal delay1">
+          <div class="steps pipelineSteps reveal delay1">
             <article class="stepItem">
-              <span>01</span>
-              <div>
+              <span class="stepNum">01</span>
+              <div class="stepBody">
+                <p class="stepMeta">Foundation</p>
                 <h3>R&amp;D Foundation</h3>
                 <p data-i18n="pipeline1">기업부설연구소 기반 핵심 기술 개발 및 진단 플랫폼 최적화.</p>
               </div>
+              <p class="stepStatus">Research</p>
             </article>
             <article class="stepItem">
-              <span>02</span>
-              <div>
+              <span class="stepNum">02</span>
+              <div class="stepBody">
+                <p class="stepMeta">Application</p>
                 <h3>Application &amp; Deployment</h3>
                 <p data-i18n="pipeline2">진단 플랫폼 확장과 상용화를 위한 적용 모델 개발.</p>
               </div>
+              <p class="stepStatus">Validation</p>
             </article>
             <article class="stepItem">
-              <span>03</span>
-              <div>
+              <span class="stepNum">03</span>
+              <div class="stepBody">
+                <p class="stepMeta">Expansion</p>
                 <h3>Global Expansion</h3>
                 <p data-i18n="pipeline3">결핵 진단 기술의 글로벌 시장 진출과 파트너십 확대.</p>
               </div>
+              <p class="stepStatus">Scale</p>
             </article>
           </div>
+        </div>
+      </section>
+
+      <section class="section teamSection" id="team">
+        <div class="wrap">
+          <div class="sectionHead reveal">
+            <div>
+              <p class="eyebrow">TEAM</p>
+              <h2>People Behind MycoDx</h2>
+            </div>
+            <p class="sectionDesc">분자진단 연구개발, 임상 검증, 사업화를 함께 이끄는 MycoDx 팀을 소개합니다.</p>
+          </div>
+
+          <div class="teamGrid" id="teamContent" aria-live="polite"></div>
         </div>
       </section>
 
@@ -219,15 +239,21 @@
           </div>
 
           <div class="contactPanels">
-            <div
-              class="mapCard reveal delay1"
-              id="companyMap"
-              data-address="경상남도 창원시 의창구 용동로83번안길 7 미래빌딩 202호"
-              aria-label="MycoDx company location map"
-            >
-              <div class="mapFallback">
+            <div class="mapCard googleMapCard">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1629.343231176825!2d128.7001853310215!3d35.239174296577445!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3568cc7be42df32b%3A0x58106966d3b18ece!2z6rK97IOB64Ko64-EIOywveybkOyLnCDsnZjssL3qtawg7Jqp64-Z66GcODPrsojslYjquLggNw!5e0!3m2!1sko!2skr!4v1780626606710!5m2!1sko!2skr"
+                width="100%"
+                height="420"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="MycoDx 위치 Google 지도">
+              </iframe>
+              <div class="mapEmbedInfo">
                 <strong>MycoDx</strong>
-                <span data-i18n="addressShort">경상남도 창원시 의창구 용동로83번안길 7</span>
+                <span>51139 경상남도 창원시 의창구 용동로83번안길 7 미래빌딩 202호</span>
+                <span>Email info@mycodx.com · Tel +82-70-8657-1848</span>
               </div>
             </div>
 
@@ -458,5 +484,6 @@
         }
       });
     </script>
+    <script src="./js/content-loader.js"></script>
   </body>
 </html>
